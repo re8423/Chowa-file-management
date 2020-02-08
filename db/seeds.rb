@@ -1,0 +1,1 @@
+Cat.create([{name: "Portraits"}, {name: "Senior pages"}, {name: "Monthly"}, {name: "Fun pages"}, {name: "Others"}])

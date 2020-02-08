@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="row" >
+        <div class="col-lq-2" >
+        <input class="form-control" id="Input2" type="text" placeholder="Search..." style="font-family:Trebuchet MS, Helvetica, sans-serif">
+        <div class="panel-group" >
+          <div class="panel panel-default" >
+            <div class="panel-heading">
+              <h4 class="panel-title" >
+                <a data-toggle="collapse" href="#collapse2" style="font-family:Trebuchet MS, Helvetica, sans-serif" >Pages</a>
+              </h4>
+            </div>
+            <div id="collapse2" class="panel-collapse collapse" style="font-family:Trebuchet MS, Helvetica, sans-serif"> 
+                    <div>
+                        <ul class="list-group"  id="List2" >
+                        <% @tasks.each do |task| %>
+                            <li class="list-group-item">
+                            <a href="/?task=<%= task.id %>"><%= task.page %> -
+                            <a href="/?task=<%= task.id %>"><%= task.title %>
+                            </a>
+                            </a>
+                            </li>
+                        <% end %>
+                        </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ja">
+<link rel="shortcut icon" href="https://cdn.discordapp.com/attachments/618840811202674702/618840951946870814/image0.png">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<head>
+	<meta charset="UTF-8">
+	<title>Chowa File Haven</title>
+	<meta name="description" content="For easier and faster file management!">
+	<meta property="og:image" content="/Users/20ishiir/Desktop/Web Service/WebS素材/litschool_websmaterials/todo3/public/Chowa banner.png" />
+</head>
+
+<style>
+title1 {
+  color: white;
+  background: rgb(59, 2, 6);
+  mix-blend-mode: multiply;
+}
+
+.navbar {
+  min-height: 80px;
+}
+
+.navbar-brand {
+  padding: 0 15px;
+  height: 80px;
+  line-height: 80px;
+}
+
+.navbar-toggle {
+  /* (80px - button height 34px) / 2 = 23px */
+  margin-top: 23px;
+  padding: 9px 10px !important;
+}
+
+@media (min-width: 768px) {
+  .navbar-nav > li > a {
+    /* (80px - line-height of 27px) / 2 = 26.5px */
+    padding-top: 26.5px;
+    padding-bottom: 26.5px;
+    line-height: 27px;
+  }
+}
+</style>
+
+
+
+<body>
+<nav  style="background-color: #FFFFFF;" class="navbar-fixed-top">
+		<div class="container">
+		<div class="navbar-header title1" %>
+			<div class="title1">
+				<a href="/" class="navbar-brand" style="font-family: 'Fugaz One', cursive;color:#000000"><font size="+2">CHOWA</font></a>
+			</div>
+		</div>
+		<div>
+			<ul class="nav navbar-nav">
+					<li><a  style="font-family: 'Montserrat', sans-serif;color:#000000;font-size:15px" href="/" class="navbar-brand">UPLOAD</a></li>
+					<li><a  onclick="passWord2()" style="font-family: 'Montserrat', sans-serif;color:#000000;font-size:15px" class="navbar-brand">MANAGE PAGES</a></li>
+					<li><a  onclick="passWord()" style="font-family: 'Montserrat', sans-serif;color:#000000;font-size:15px" class="navbar-brand">CATEGORIES + YEARS</a></li>
+
+					<!--	
+				<li class="dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#" style="font-family: 'Montserrat', sans-serif;color:#000000;font-size:15px" href="/res" class="navbar-brand">RESOURCES AND LINKS</a>
+				<ul class="dropdown-menu">
+					<li><a href="#"><font style="font-family: 'Quicksand', sans-serif;" color="FFFFFF"><a style="color:#111214" href="https://docs.google.com/document/d/19j3LGqF7K22R5iBnvZIGOd4JsNCH0UNzth5QDYmdwsU/edit" target="_blank">  School events</font></a></li>
+					<br>
+					<li><a href="#"><font style="font-family: 'Quicksand', sans-serif;" color="FFFFFF"><a style="color:#111214" href="https://docs.google.com/spreadsheets/d/1ttKTsIYud1KMLy248D_kIoELDToObvebotm4iGFfVP4/edit#gid=2033488459" target="_blank">  Chowa Ladder 2019-2020</font></a></li>
+					<br>
+					<li><a href="#"><font style="font-family: 'Quicksand', sans-serif;" color="FFFFFF"><a style="color:#111214" href="https://drive.google.com/file/d/159CRynUUJ0FAOan-Yp3s7KehpXAeiGgt/view" target="_blank">  2020 Blank Template</font></a></li>
+					<br>
+					<li><a href="#"><font style="font-family: 'Quicksand', sans-serif;" color="FFFFFF"><a style="color:#111214" href="https://drive.google.com/drive/folders/0BzdAYXn6nF-ic1pHVzVUdWtpYlk" target="_blank">  Archives</font></a></li>
+				</ul>
+				</li>
+
+				-->
+			</ul>
+		</div>
+		<ul class="nav navbar-nav navbar-right">
+			<% if !current_user.nil? %>
+				<li><a style="font-family: 'Montserrat', sans-serif;color:#000000;font-size:15px">Hello, Chowa of <%= current_user.name %></a></li>
+				<li><a style="font-family: 'Montserrat', sans-serif;color:#000000" href="/signout">SWITCH YEAR</a></li>
+			<% else %>
+				<li><a style="font-family: 'Montserrat', sans-serif;color:#000000;font-size:15px">YEAR:</a></li>
+				<li><a style="font-family: 'Montserrat', sans-serif;color:#000000;font-size:15px" href="/signin">SELECT YEAR</a></li>
+				<li><a onclick="passWord3()" style="font-family: 'Montserrat', sans-serif;color:#000000;font-size:15px">ADD NEW YEAR</a></li>
+			<% end %>
+		</ul>
+		</div>
+</nav>
+<%= yield %>
+</body>
+</html>
+
+<script>
+function passWord() {
+var testV = 1;
+var pass1 = prompt('Please Enter the Password',' ');
+while (testV < 3) {
+if (pass1.toLowerCase() == "chowa") {
+document.location.href = "/newcat"
+break;
+}
+testV+=1;
+var pass1 =
+prompt('Access Denied - Password Incorrect, Please Try Again.','Password');
+}
+if (pass1.toLowerCase()!="password" & testV ==3)
+history.go(-1);
+return " ";
+}
+</script>
+
+<script>
+function passWord2() {
+var testV = 1;
+var pass1 = prompt('Please Enter the Password',' ');
+while (testV < 3) {
+
+if (pass1.toLowerCase() == "chowa") {
+document.location.href = "/manage"
+break;
+}
+testV+=1;
+var pass1 =
+prompt('Access Denied - Password Incorrect, Please Try Again.','Password');
+}
+if (pass1.toLowerCase()!="password" & testV ==3)
+history.go(-1);
+return " ";
+}
+</script>
+
+<script>
+function passWord3() {
+var testV = 1;
+var pass1 = prompt('Please Enter the Password',' ');
+while (testV < 3) {
+
+if (pass1.toLowerCase() == "chowa") {
+document.location.href = "/signup"
+break;
+}
+testV+=1;
+var pass1 =
+prompt('Access Denied - Password Incorrect, Please Try Again.','Password');
+}
+if (pass1.toLowerCase()!="password" & testV ==3)
+history.go(-1);
+return " ";
+}
+</script>

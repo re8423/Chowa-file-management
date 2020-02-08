@@ -1,0 +1,106 @@
+<style>
+@import url('https://fonts.googleapis.com/css?family=Heebo:900&display=swap');
+</style>
+
+<style>
+@import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
+</style>
+
+<style>
+@import url('https://fonts.googleapis.com/css?family=Righteous&display=swap');
+</style>
+
+<style>
+@import url('https://fonts.googleapis.com/css?family=Fugaz+One&display=swap');
+</style>
+
+<style>
+@import url('https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap');
+</style>
+
+<style>
+@import url('https://fonts.googleapis.com/css?family=Pacifico&display=swap');
+</style>
+
+<style>
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+</style>
+
+<style>
+@import url('https://fonts.googleapis.com/css?family=Lato:100&display=swap');
+</style>
+
+<style>
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:700&display=swap');
+</style>
+
+<style>
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300&display=swap');
+</style>
+
+<style>
+body{
+  background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAIUlEQVQoU2NkIBIwEqmOAVnhfwYGFD6KGWSZiNcVw8pEAEZ0AQuafugDAAAAAElFTkSuQmCC);
+}
+
+.box4{
+	width:230px;
+  height:25px;
+  position: relative;
+  left: 135px;
+  top: 65px;
+  opacity: 0.5;
+  z-index: 1;
+}
+
+.text {
+    position: relative;
+    z-index: 100000;
+}
+
+.edit{
+width:500px;
+  height:25px;
+  text-align:center;
+  margin:70px auto;
+  opacity: 1;
+}
+
+.green{
+	background:#0f0;
+}
+</style>
+
+<br>
+<br>
+<div class="container">
+    <form action="/tasks/<%= @task.id %>" method="post">
+        <div class="controls">
+        <div class="edit">
+        <div class="box4 green"></div>
+            <div class="form-group">
+            <h1 class="text" style="font-family: 'Open Sans', sans-serif; font-size:40px;"><font color="#181818"><center>EDIT INFO</center></font></h1>
+                <h1 style="font-family: 'Open Sans', sans-serif; font-size:40px;"><font color="#181818"><center><%= CGI.escapeHTML(@task.title) %></center></font></h1>
+                <h1 style="font-family: 'Open Sans', sans-serif; font-size:30px;"><font color="#181818"><center>Page number</center></font></h1>
+                <input type="text" name="start" placeholder="START" value="<%= @task.start%>" class="form-control input-lg" style="font-family:Courier New, Courier, monospace;" required><br>
+                <input type="text" name="end" placeholder="END" value="<%= @task.end%>" class="form-control input-lg" style="font-family:Courier New, Courier, monospace;" required><br>
+
+                <h3 style="font-family: 'Open Sans', sans-serif;"><font color="	#181818"><center>CATEGORY：</center></font></h3>
+                <select name="cat" class="form-control">
+                    <% Cat.all.each do |cat| %>
+                        <option value="<%= cat.id %>"
+                            <% if cat.id == @task.cat_id %>
+                                selected
+                            <% end %>>
+                                <%=cat.name%>
+                        </option>
+                    <% end %>
+                </select>
+            </div>
+            <div class="form-group col-lq-4">
+            <input class="form-control col-lq-4" style="font-family: 'Righteous', cursive; font-style:bold;color:#181818" type="submit" value="SUBMIT" >
+            </div>
+            </div>
+        </div>
+    </form>
+</div>
